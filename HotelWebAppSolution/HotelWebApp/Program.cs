@@ -1,27 +1,22 @@
-using HotelApp.Models;
-using HotelWebApp.Models;
+using HotelWebApp.Data;
+using HotelWebApp.Interfaces;
 using Microsoft.Extensions.Options;
+using HotelWebApp.Models;
+using HotelWebApp.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // MongoDB
-builder.Services.Configure<HotelAppDBSettings>(
-    builder.Configuration.GetSection("HotelAppDatabase"));
-
-builder.Services.AddSingleton<Apartment>();
+builder.Services.Configure<DBSettings>(
+    options =>
+    {
+        options.ConnectionString = builder.Configuration.GetSection("MongoDB:ConnectionString").Value;
+        options.DatabaseName = builder.Configuration.GetSection("MongoDB:DatabaseName").Value;
+    });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
-var settings = Options.Create(new HotelAppDBSettings
-{
-    ConnectionString = "mongodb+srv://abojovic:abojovic@hotel-app.ezsvejd.mongodb.net/?retryWrites=true&w=majority&appName=Hotel-App",
-    DatabaseName = "Hotel-App",
-    CollectionName = "Apartments"
-});
-
-var apartment = new Apartment(settings);
-apartment.IsConnectedAsync();
+builder.Services.AddScoped<IApartment, HotelAppDBContext>();
 
 var app = builder.Build();
 
