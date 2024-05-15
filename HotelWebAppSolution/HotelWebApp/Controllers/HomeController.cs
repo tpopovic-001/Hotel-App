@@ -15,13 +15,15 @@ namespace HotelWebApp.Controllers
             _apartment = apartment; 
         }
         // [HttpPost]
-        public async Task<IActionResult> Index(Apartment apartment)
+        // [HttpPut("/{id}")]
+        [HttpDelete("/{id}")]
+        public async Task<IActionResult> Index(string id, Apartment apartment)
         {
             // Vraca Apartman sa datim ID 
-            // return Json(_apartment.GetApartment("6626c9d6b3538a3c2827f0d5"));
+            // return Json(_apartment.GetApartment("6644e4c7eb03339ca1b50daa"));
 
             // Vraca sve Apartmane
-             return Json(_apartment.GetAllApartments());
+            // return Json(_apartment.GetAllApartments());
 
             // Dodavanje apartmana
             // Potrebno je dodati [HttpPost] dekorator iznad metode
@@ -32,7 +34,23 @@ namespace HotelWebApp.Controllers
             //Ovo staviti u metodu za dodavanje apartmana
             // _apartment.CreateApartment(apartment);
             // return Json(_apartment.GetAllApartments());
+
+            // Update apartmana            
+            // Koristiti HttpPut dekorator kao u komentaru iznad ove funkcije
+            // poziva se sa localhost/id_apartmana i u body idu podaci sa forme kao i na insert-u
+
+            // Problem je sto nije klasican update, nego replace, pa ako u formi ne budu po default-u
+            // uneseni svi podaci, za te podatke ce biti null u bazi
+            // _apartment.UpdateApartment(id, apartment);
+            // return Json(apartment);
+
+            // Brisanje
+            _apartment.DeleteApartment(id);
+            return Json("Deleted: " + id);
+
         }
+
+        
 
         public IActionResult Privacy()
         {

@@ -27,16 +27,16 @@ namespace HotelWebApp.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Id { get; set; }
         [BsonElement]
-        public string ApartmentName { get; set; }
-        public string Address { get; set; }
-        public string ApartmentDescription { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
-        public string Location { get; set; }
-        public List<string> ImagePaths { get; set; }
-        public int MinimumStay { get; set; }
-        public int NumOfBeds { get; set; }
-        public decimal PricePerNight { get; set; }
+        public string? ApartmentName { get; set; }
+        public string? Address { get; set; }
+        public string? ApartmentDescription { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
+        public string? Location { get; set; }
+        public List<string>? ImagePaths { get; set; }
+        public int? MinimumStay { get; set; }
+        public int? NumOfBeds { get; set; }
+        public decimal? PricePerNight { get; set; }
 
 
         /*public Apartment()

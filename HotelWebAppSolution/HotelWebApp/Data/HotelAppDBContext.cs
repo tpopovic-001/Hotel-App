@@ -37,11 +37,11 @@ namespace HotelWebApp.Data
                 .Set("ApartmentDescription", apartment.ApartmentDescription)
                 .Set("Location", apartment.Location)
                 .Set("City", apartment.City)
-                .Set("country", apartment.Country)
-                .Set("image_paths", apartment.ImagePaths)
-                .Set("minimum_stay", apartment.MinimumStay)
-                .Set("num_of_beds", apartment.NumOfBeds)
-                .Set("price_per_night", apartment.PricePerNight);
+                .Set("Country", apartment.Country)
+                .Set("ImagePaths", apartment.ImagePaths)
+                .Set("MinimumStay", apartment.MinimumStay)
+                .Set("NumOfBeds", apartment.NumOfBeds)
+                .Set("PricePerNight", apartment.PricePerNight);
 
             apartmentsCollection.UpdateOne(filter, update);
 
