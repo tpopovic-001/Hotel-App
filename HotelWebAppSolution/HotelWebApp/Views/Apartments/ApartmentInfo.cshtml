@@ -12,7 +12,7 @@
         <span>Broj dana boravka:</span><p> @Model.MinimumStay</p>
     @if (Model.ImagePaths != null)
     {
-         <p>Lista postojecih slika:</p><li>@foreach(var img in Model.ImagePaths) @img</li>
+         <p>Lista postojecih slika:@foreach(var img in Model.ImagePaths) @img</p>
     }
     <span>Cena po nocenju:</span><p> @Model.PricePerNight</p>
     <a asp-route="changeApartmentInfo" asp-route-id="@Model.Id">Izmeni</a>
