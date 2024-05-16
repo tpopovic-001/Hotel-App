@@ -1,0 +1,34 @@
+﻿@model List<Apartment>
+@{
+    ViewData["Title"] = "Apartments page";
+   
+}
+
+<div class="text-center">
+    <h1 class="display-4">Dostupni apartmani u nasem hotelu</h1><a asp-route="insertApartmentForm">Unesi novi apartman</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Naziv apartmana</th>
+                <th>Adresa</th>
+                <th>Opis</th>
+                <th>Grad</th>
+                <th>Drzava</th>
+                <th>Opcije</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var apt in Model)
+            {
+                <tr>
+                    <td>@apt.ApartmentName</td>
+                    <td>@apt.Address</td>
+                    <td>@apt.ApartmentDescription</td>
+                    <td>@apt.City</td>
+                    <td>@apt.Country</td>
+                    <td><a asp-route="apartmentInfo" asp-route-id="@apt.Id">Info</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>    
+</div>

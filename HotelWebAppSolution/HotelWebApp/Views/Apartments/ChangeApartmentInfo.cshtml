@@ -1,0 +1,54 @@
+﻿@model Apartment
+
+<div class="text-left">
+    <h1>Izmeni podatke o sobi</h1>
+    <form method="post" asp-action="UpdateApartmentInfo" asp-route-id="@Model.Id">
+        <p>
+            <label>Naziv apartmana</label>
+            <input type="text" name="ApartmentName" value="@Model.ApartmentName" />
+        </p>
+        <p>
+            <label>Adresa</label>
+            <input type="text" name="Address" value="@Model.Address" />
+        </p>
+        <p><label>Opis</label></p>
+        <p> 
+            <textarea rows="10" cols="15" name="ApartmentDescription">
+                @Model.ApartmentDescription
+            </textarea>
+        </p>
+        <p>
+            <label>Lokacija apartmana</label>
+            <input type="text" name="Location" value="@Model.Location" />
+        </p>
+        <!-- Ovde treba dodati i kontrolu za slike! 
+       
+        <p>
+            <label>Dodajte fotografije</label>
+            <input type="file" name="ImagePaths" accept="image/png, image/jpeg" multiple />
+        </p> -->
+        <p>
+            <label>Grad</label>
+            <input type="text" name="City" value="@Model.City" />
+        </p>
+        <p>
+            <label>Drzava</label>
+            <input type="text" name="Country" value="@Model.Country" />
+        </p>
+        <p>
+            <label>Minimalan broj dana boravka</label>
+            <input type="number" name="MinimumStay" value="@Model.MinimumStay" />
+        </p>
+        <p>
+            <label>Broj kreveta</label>
+            <input type="number" name="NumOfBeds" value="@Model.NumOfBeds" />
+        </p>
+        <p>
+            <label>Cena apartmana za noc</label>
+            <input type="text" name="PricePerNight" value="@Model.PricePerNight" />
+        </p>
+        <p>
+            <button type="submit" >Izmeni</button>
+        </p>
+    </form>
+</div>

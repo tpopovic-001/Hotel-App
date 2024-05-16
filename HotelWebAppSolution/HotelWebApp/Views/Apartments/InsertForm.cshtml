@@ -1,0 +1,52 @@
+﻿<div class="text-left">
+    <h1>Unesi novi apartman</h1>
+    <form method="post" asp-action="insertNewApartment">
+        <p>
+            <label>Naziv apartmana</label>
+            <input type="text" name="ApartmentName"/>
+        </p>
+        <p>
+            <label>Adresa</label>
+            <input type="text" name="Address"/>
+        </p>
+        <p><label>Opis</label></p>
+        <p>
+            <textarea rows="10" cols="15" name="ApartmentDescription">
+                
+            </textarea>
+        </p>
+        <p>
+            <label>Lokacija apartmana</label>
+            <input type="text" name="Location"/>
+        </p>
+        <!-- Ovde treba dodati i kontrolu za slike!
+
+         <p>
+             <label>Dodajte fotografije</label>
+             <input type="file" name="ImagePaths" accept="image/png, image/jpeg" multiple />
+         </p> -->
+        <p>
+            <label>Grad</label>
+            <input type="text" name="City"/>
+        </p>
+        <p>
+            <label>Drzava</label>
+            <input type="text" name="Country"/>
+        </p>
+        <p>
+            <label>Minimalan broj dana boravka</label>
+            <input type="number" name="MinimumStay"/>
+        </p>
+        <p>
+            <label>Broj kreveta</label>
+            <input type="number" name="NumOfBeds"/>
+        </p>
+        <p>
+            <label>Cena apartmana za noc</label>
+            <input type="text" name="PricePerNight"/>
+        </p>
+        <p>
+            <button type="submit">Unesi</button>
+        </p>
+    </form>
+</div>

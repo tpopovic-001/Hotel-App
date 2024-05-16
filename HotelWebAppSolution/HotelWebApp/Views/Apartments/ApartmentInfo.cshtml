@@ -1,0 +1,20 @@
+﻿@model Apartment
+
+
+<div class="text-left">
+    <h1>@Model.ApartmentName</h1>
+        <span>Adresa:</span><p> @Model.Address</p>
+        <span>Opis:</span><p> @Model.ApartmentDescription</p>
+        <span>Grad:</span><p> @Model.City</p>
+        <span>Drzava:</span><p> @Model.Country</p>
+        <span>Lokacija:</span><p> @Model.Location</p>
+        <span>Broj kreveta:</span><p> @Model.NumOfBeds</p>
+        <span>Broj dana boravka:</span><p> @Model.MinimumStay</p>
+    @if (Model.ImagePaths != null)
+    {
+         <p>Lista postojecih slika:</p><li>@foreach(var img in Model.ImagePaths) @img</li>
+    }
+    <span>Cena po nocenju:</span><p> @Model.PricePerNight</p>
+    <a asp-route="changeApartmentInfo" asp-route-id="@Model.Id">Izmeni</a>
+    <a asp-route="deleteApartment" asp-route-id="@Model.Id">Obrisi</a>
+</div>
