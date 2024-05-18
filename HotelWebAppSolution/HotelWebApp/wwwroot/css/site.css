@@ -55,3 +55,65 @@ td a {
 .container {
     margin-bottom: 60px;
 }
+
+.btn-info-custom {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid violet;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-info-custom:hover {
+        background-color: violet;
+        box-shadow: 0 0 10px violet;
+        color: white;
+    }
+
+.card {
+    min-height: 35vh;
+    border: solid thin violet;
+}
+
+.link-container {
+    height: 15vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+}
+
+    li a:hover {
+        text-shadow: 0 0 10px violet;
+        color: violet;
+    }
+
+    li a::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 2px;
+        background: violet;
+        transition: transform 0.3s ease-in-out;
+        transform: scaleX(0);
+        transform-origin: right;
+    }
+
+    li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
