@@ -1,50 +1,61 @@
-﻿<div class="text-left">
-    <h1>Unesi novi apartman</h1>
-    <form method="post" asp-action="insertNewApartment">
-        <p>
-            <label>Naziv apartmana</label>
-            <input type="text" name="ApartmentName"/>
-        </p>
-        <p>
-            <label>Adresa</label>
-            <input type="text" name="Address"/>
-        </p>
-        <p><label>Opis</label></p>
-        <p>
-            <textarea rows="10" cols="15" name="ApartmentDescription">
-                
-            </textarea>
-        </p>
-        <p>
-            <label>Lokacija apartmana</label>
-            <input type="text" name="Location"/>
-        </p>
-         <p>
-             <label>Dodajte fotografije</label>
-             <input type="file" name="ImagePaths" accept="image/png, image/jpeg image/jpg" multiple />
-         </p>
-        <p>
-            <label>Grad</label>
-            <input type="text" name="City"/>
-        </p>
-        <p>
-            <label>Drzava</label>
-            <input type="text" name="Country"/>
-        </p>
-        <p>
-            <label>Minimalan broj dana boravka</label>
-            <input type="number" name="MinimumStay"/>
-        </p>
-        <p>
-            <label>Broj kreveta</label>
-            <input type="number" name="NumOfBeds"/>
-        </p>
-        <p>
-            <label>Cena apartmana za noc</label>
-            <input type="text" name="PricePerNight"/>
-        </p>
-        <p>
-            <button type="submit">Unesi</button>
-        </p>
-    </form>
+﻿@model List<Apartment>
+@{
+    ViewData["Title"] = "Insert apartment";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h1 class="text-center mb-4">Unesi novi apartman</h1>
+            <form method="post" asp-action="insertNewApartment">
+                <div class="mb-3">
+                    <label for="ApartmentName" class="form-label">Naziv apartmana</label>
+                    <input type="text" class="form-control" id="ApartmentName" name="ApartmentName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Address" class="form-label">Adresa</label>
+                    <input type="text" class="form-control" id="Address" name="Address" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ApartmentDescription" class="form-label">Opis</label>
+                    <textarea class="form-control" id="ApartmentDescription" rows="5" name="ApartmentDescription" required></textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="Location" class="form-label">Lokacija apartmana</label>
+                    <input type="text" class="form-control" id="Location" name="Location" required>
+                </div>
+                <div class="mb-3">
+                    <label for="ImagePaths" class="form-label">Dodajte fotografije</label>
+                    <input type="file" class="form-control" id="ImagePaths" name="ImagePaths" accept="image/png, image/jpeg, image/jpg" multiple>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-6 mb-3">
+                        <label for="City" class="form-label">Grad</label>
+                        <input type="text" class="form-control" id="City" name="City" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="Country" class="form-label">Država</label>
+                        <input type="text" class="form-control" id="Country" name="Country" required>
+                    </div>
+                </div>
+                <div class="row g-3">
+                    <div class="col-md-4 mb-3">
+                        <label for="MinimumStay" class="form-label">Minimalan broj dana boravka</label>
+                        <input type="number" class="form-control" id="MinimumStay" name="MinimumStay" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="NumOfBeds" class="form-label">Broj kreveta</label>
+                        <input type="number" class="form-control" id="NumOfBeds" name="NumOfBeds" required>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="PricePerNight" class="form-label">Cena apartmana za noć</label>
+                        <input type="text" class="form-control" id="PricePerNight" name="PricePerNight" required>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Unesi</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
