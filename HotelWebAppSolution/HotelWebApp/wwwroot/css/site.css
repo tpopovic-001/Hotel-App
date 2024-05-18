@@ -20,3 +20,38 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+td a {
+    text-decoration: none;
+}
+
+#unesiApartman {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 2px solid violet;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+}
+
+    #unesiApartman:hover {
+        background-color: violet;
+        box-shadow: 0 0 10px violet;
+        color: white;
+    }
+
+.footer {
+    width: 100%;
+    background-color: #343a40;
+    color: white;
+    padding: 10px 0;
+    font-size: 14px;
+}
+
+.container {
+    margin-bottom: 60px;
+}

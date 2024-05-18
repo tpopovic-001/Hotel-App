@@ -11,34 +11,6 @@
         <a id="unesiApartman" asp-route="insertApartmentForm">Unesi novi apartman</a>
     </div>
 
-    @* <div class="container-flex table-responsive">
-    <table class="table table-hover table-bordered table-responsive text-center">
-    <thead>
-    <tr>
-    <th>Naziv apartmana</th>
-    <th>Adresa</th>
-    <th>Opis</th>
-    <th>Grad</th>
-    <th>Drzava</th>
-    <th>Opcije</th>
-    </tr>
-    </thead>
-    <tbody>
-    @foreach (var apt in Model)
-    {
-    <tr>
-    <td>@apt.ApartmentName</td>
-    <td>@apt.Address</td>
-    <td>@apt.ApartmentDescription</td>
-    <td>@apt.City</td>
-    <td>@apt.Country</td>
-    <td><a asp-route="apartmentInfo" asp-route-id="@apt.Id">Info</a></td>
-    </tr>
-    }
-    </tbody>
-    </table>
-    </div>  *@
-
     <div class="container-flex">
         <div class="row">
             @for (int i = 0; i < Model.Count; i += 2)
