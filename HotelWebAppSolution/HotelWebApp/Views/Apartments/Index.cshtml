@@ -1,34 +1,74 @@
 ﻿@model List<Apartment>
 @{
     ViewData["Title"] = "Apartments page";
-   
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Dostupni apartmani u nasem hotelu</h1><a asp-route="insertApartmentForm">Unesi novi apartman</a>
-    <table>
-        <thead>
-            <tr>
-                <th>Naziv apartmana</th>
-                <th>Adresa</th>
-                <th>Opis</th>
-                <th>Grad</th>
-                <th>Drzava</th>
-                <th>Opcije</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach(var apt in Model)
+<div class="container">
+    <h1 class="text-center">Dostupni apartmani u nasem hotelu</h1>
+
+    <div class="link-container">
+        <a id="unesiApartman" asp-route="insertApartmentForm">Unesi novi apartman</a>
+    </div>
+
+    @* <div class="container-flex table-responsive">
+    <table class="table table-hover table-bordered table-responsive text-center">
+    <thead>
+    <tr>
+    <th>Naziv apartmana</th>
+    <th>Adresa</th>
+    <th>Opis</th>
+    <th>Grad</th>
+    <th>Drzava</th>
+    <th>Opcije</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var apt in Model)
+    {
+    <tr>
+    <td>@apt.ApartmentName</td>
+    <td>@apt.Address</td>
+    <td>@apt.ApartmentDescription</td>
+    <td>@apt.City</td>
+    <td>@apt.Country</td>
+    <td><a asp-route="apartmentInfo" asp-route-id="@apt.Id">Info</a></td>
+    </tr>
+    }
+    </tbody>
+    </table>
+    </div>  *@
+
+    <div class="container-flex">
+        <div class="row">
+            @for (int i = 0; i < Model.Count; i += 2)
             {
-                <tr>
-                    <td>@apt.ApartmentName</td>
-                    <td>@apt.Address</td>
-                    <td>@apt.ApartmentDescription</td>
-                    <td>@apt.City</td>
-                    <td>@apt.Country</td>
-                    <td><a asp-route="apartmentInfo" asp-route-id="@apt.Id">Info</a></td>
-                </tr>
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model[i].ApartmentName</h5>
+                            <p class="card-text">@Model[i].Address</p>
+                            <p class="card-text">@Model[i].ApartmentDescription</p>
+                            <p class="card-text">@Model[i].City, @Model[i].Country</p>
+                            <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i].Id })" class="btn btn-info-custom">Info</a>
+                        </div>
+                    </div>
+                </div>
+                @if (i + 1 < Model.Count)
+                {
+                    <div class="col-md-6">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">@Model[i + 1].ApartmentName</h5>
+                                <p class="card-text">@Model[i + 1].Address</p>
+                                <p class="card-text">@Model[i + 1].ApartmentDescription</p>
+                                <p class="card-text">@Model[i + 1].City, @Model[i + 1].Country</p>
+                                <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i + 1].Id })" class="btn btn-info-custom">Info</a>
+                            </div>
+                        </div>
+                    </div>
+                }
             }
-        </tbody>
-    </table>    
+        </div>
+    </div>
 </div>
