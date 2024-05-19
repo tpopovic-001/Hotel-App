@@ -3,6 +3,19 @@
 
 // Write your JavaScript code.
 
+window.onscroll = function () { stickyNavbar() };
+
+var navbar = document.getElementById("myNavbar");
+var sticky = navbar.offsetTop;
+
+function stickyNavbar() {
+    if (window.pageYOffset >= sticky) {
+        navbar.classList.add("sticky")
+    } else {
+        navbar.classList.remove("sticky");
+    }
+}
+
 const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=40.730610&longitude=-73.935242&checkIn=2024-05-21&checkOut=2024-06-04&pageNumber=1&currencyCode=USD';
 const options = {
     method: 'GET',
