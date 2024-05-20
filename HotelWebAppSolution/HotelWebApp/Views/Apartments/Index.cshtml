@@ -25,6 +25,7 @@
                             <p class="card-text">@Model[i].Address</p>
                             <p class="card-text">@Model[i].ApartmentDescription</p>
                             <p class="card-text">@Model[i].City, @Model[i].Country</p>
+                            <p class="card-text">Cena noćenja: @Model[i].PricePerNight</p>
                             <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i].Id })" class="btn btn-info-custom">Info</a>
                         </div>
                     </div>
@@ -42,6 +43,7 @@
                                 <p class="card-text">@Model[i + 1].Address</p>
                                 <p class="card-text">@Model[i + 1].ApartmentDescription</p>
                                 <p class="card-text">@Model[i + 1].City, @Model[i + 1].Country</p>
+                                <p class="card-text">Cena noćenja: @Model[i + 1].PricePerNight</p>
                                 <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i + 1].Id })" class="btn btn-info-custom">Info</a>
                             </div>
                         </div>
