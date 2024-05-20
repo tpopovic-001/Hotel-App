@@ -1,7 +1,6 @@
 ﻿@model List<Apartment>
 @{
     ViewData["Title"] = "Apartments page";
-
 }
 
 <div class="container">
@@ -37,7 +36,7 @@
                             <div class="card-body">
                                 @if (Model[i].ImagePaths != null && Model[i].ImagePaths.Count > 0)
                                 {
-                                    <img src="@Model[i].ImagePaths[0]" class="card-img-top" alt="Apartment Image">
+                                    <img src="@Model[i + 1].ImagePaths[0]" class="card-img-top w-100 d-flex" alt="Apartment Image">
                                 }
                                 <h5 class="card-title">@Model[i + 1].ApartmentName</h5>
                                 <p class="card-text">@Model[i + 1].Address</p>
