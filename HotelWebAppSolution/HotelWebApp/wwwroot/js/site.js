@@ -4,69 +4,80 @@
 // Write your JavaScript code.
 
 
-const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=40.730610&longitude=-73.935242&checkIn=2024-05-21&checkOut=2024-06-04&pageNumber=1&currencyCode=USD';
-const options = {
-    method: 'GET',
-    headers: {
-        'X-RapidAPI-Key': 'aab9d3409emsh4dec1d7b43abf77p187cf8jsn95dc745d2b8c',
-        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-    }
-};
+//const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=40.730610&longitude=-73.935242&checkIn=2024-05-21&checkOut=2024-06-04&pageNumber=1&currencyCode=USD';
+//const options = {
+//    method: 'GET',
+//    headers: {
+//        'X-RapidAPI-Key': 'aab9d3409emsh4dec1d7b43abf77p187cf8jsn95dc745d2b8c',
+//        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+//    }
+//};
 
-async function fetchHotels() {
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        displayHotels(result.data.data);
-    } catch (error) {
-        console.error(error);
-    }
-}
+//async function fetchHotels() {
+//    try {
+//        const response = await fetch(url, options);
+//        const result = await response.json();
+//        displayHotels(result.data.data);
+//    } catch (error) {
+//        console.error(error);
+//    }
+//}
 
-function displayHotels(hotels) {
-    const hotelsContainer = document.getElementById('APIHotels').querySelector('.row');
+//function displayHotels(hotels) {
+//    const hotelsContainer = document.getElementById('APIHotels').querySelector('.row');
 
-    if (!hotelsContainer) {
-        console.error('Element with id "APIHotels" not found');
-        return;
-    }
+//    if (!hotelsContainer) {
+//        console.error('Element with id "APIHotels" not found');
+//        return;
+//    }
 
-    hotels.forEach(hotel => {
-        const colDiv = document.createElement('div');
-        colDiv.classList.add('col-md-6');
+//    hotels.forEach(hotel => {
+//        const colDiv = document.createElement('div');
+//        colDiv.classList.add('col-md-6');
 
-        const cardDiv = document.createElement('div');
-        cardDiv.classList.add('card', 'mb-4');
+//        const cardDiv = document.createElement('div');
+//        cardDiv.classList.add('card', 'mb-4');
 
-        const hotelImage = document.createElement('img');
-        hotelImage.classList.add('card-img-top');
-        hotelImage.src = hotel.cardPhotos[0].sizes.urlTemplate.replace('{width}', '450').replace('{height}', '300');
-        hotelImage.alt = hotel.title;
+//        const hotelImage = document.createElement('img');
+//        hotelImage.classList.add('card-img-top');
 
-        const cardBodyDiv = document.createElement('div');
-        cardBodyDiv.classList.add('card-body');
+//        // Izvuci link slike iz podataka hotela
+//        const imageUrl = hotel.cardPhotos[0]?.sizes?.urlTemplate;
 
-        const cardTitle = document.createElement('h5');
-        cardTitle.classList.add('card-title');
-        cardTitle.textContent = hotel.title;
+//        if (imageUrl) {
+//            // Zamijeni {width} i {height} sa stvarnim dimenzijama
+//            const replacedUrl = imageUrl.replace('{width}', '450').replace('{height}', '300');
+//            hotelImage.src = replacedUrl;
+//        } else {
+//            // Ako nema dostupne slike, postavi placeholder sliku
+//            hotelImage.src = 'placeholder.jpg'; // Postavite putanju do placeholder slike
+//            hotelImage.alt = 'No image available';
+//        }
 
-        const cardTextLocation = document.createElement('p');
-        cardTextLocation.classList.add('card-text');
-        cardTextLocation.textContent = hotel.secondaryInfo;
+//        const cardBodyDiv = document.createElement('div');
+//        cardBodyDiv.classList.add('card-body');
 
-        const cardTextRating = document.createElement('p');
-        cardTextRating.classList.add('card-text');
-        cardTextRating.textContent = `Rating: ${hotel.bubbleRating.rating} (${hotel.bubbleRating.count} reviews)`;
+//        const cardTitle = document.createElement('h5');
+//        cardTitle.classList.add('card-title');
+//        cardTitle.textContent = hotel.title;
 
-        cardBodyDiv.appendChild(cardTitle);
-        cardBodyDiv.appendChild(cardTextLocation);
-        cardBodyDiv.appendChild(cardTextRating);
+//        const cardTextLocation = document.createElement('p');
+//        cardTextLocation.classList.add('card-text');
+//        cardTextLocation.textContent = hotel.secondaryInfo;
 
-        cardDiv.appendChild(hotelImage);
-        cardDiv.appendChild(cardBodyDiv);
-        colDiv.appendChild(cardDiv);
-        hotelsContainer.appendChild(colDiv);
-    });
-}
+//        const cardTextRating = document.createElement('p');
+//        cardTextRating.classList.add('card-text');
+//        cardTextRating.textContent = `Rating: ${hotel.bubbleRating.rating} (${hotel.bubbleRating.count} reviews)`;
 
-document.addEventListener('DOMContentLoaded', fetchHotels);
+//        cardBodyDiv.appendChild(cardTitle);
+//        cardBodyDiv.appendChild(cardTextLocation);
+//        cardBodyDiv.appendChild(cardTextRating);
+
+//        cardDiv.appendChild(hotelImage);
+//        cardDiv.appendChild(cardBodyDiv);
+//        colDiv.appendChild(cardDiv);
+//        hotelsContainer.appendChild(colDiv);
+//    });
+//}
+
+//document.addEventListener('DOMContentLoaded', fetchHotels);
