@@ -31,6 +31,7 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+// Rute 
 
 app.MapControllerRoute(
     name: "allApartments",
@@ -59,6 +60,12 @@ app.MapControllerRoute(
     name: "deleteApartment",
     pattern: "deleteApartment/{id}",
      defaults: new { controller = "Apartments", action = "DeleteApartment" }
+    );
+
+app.MapControllerRoute(
+    name: "deletePhoto",
+    pattern: "/{controller}/{action}",
+     defaults: new { controller = "Apartments", action = "DeletePhoto" }
     );
 
 app.MapControllerRoute(

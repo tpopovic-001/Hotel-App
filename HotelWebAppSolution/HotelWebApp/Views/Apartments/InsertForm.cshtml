@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h1 class="text-center mb-4">Unesi novi apartman</h1>
-            <form method="post" asp-action="insertNewApartment">
+            <form method="post" asp-action="insertNewApartment" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="ApartmentName" class="form-label">Naziv apartmana</label>
                     <input type="text" class="form-control" id="ApartmentName" name="ApartmentName" required>
@@ -26,7 +26,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="ImagePaths" class="form-label">Dodajte fotografije</label>
-                    <input type="file" class="form-control" id="ImagePaths" name="ImagePaths" accept="image/png, image/jpeg, image/jpg" multiple>
+                    <input type="file" class="form-control" id="ImagePaths" name="ImagePaths" accept="image/png, image/jpeg" multiple>
                 </div>
                 <div class="row g-3">
                     <div class="col-md-6 mb-3">

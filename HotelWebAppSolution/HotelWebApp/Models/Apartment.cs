@@ -6,6 +6,7 @@ using HotelWebApp.Models;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 /*_id
 apartment_name
 address

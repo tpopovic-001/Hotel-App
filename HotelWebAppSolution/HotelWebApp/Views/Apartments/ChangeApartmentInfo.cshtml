@@ -1,10 +1,34 @@
 ﻿@model Apartment
 
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function deleteImage(Id, imagePath) {
+        if (confirm('Are you sure you want to remove this image?')) {
+            $.ajax({
+                url: '/Apartments/DeletePhoto',
+                type: 'POST',
+                data: {
+                    id: Id,
+                    imagePath: imagePath
+                },
+                success: function (result) {
+                    if (result.success) {
+                        // Uklanjanje slike sa UI-a
+                        $('.image-container[data-image-path="' + imagePath + '"]').remove();
+                    } else {
+                        alert('Failed to remove image.');
+                    }
+                }
+            });
+        }
+    }
+</script>
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h1 class="mb-4 text-center">Izmeni podatke o sobi</h1>
-            <form method="post" asp-action="UpdateApartmentInfo" asp-route-id="@Model.Id">
+            <form method="post" asp-action="UpdateApartmentInfo" asp-route-id="@Model.Id" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="ApartmentName" class="form-label">Naziv apartmana</label>
                     <input type="text" class="form-control" id="ApartmentName" name="ApartmentName" value="@Model.ApartmentName" />
@@ -21,11 +45,23 @@
                     <label for="Location" class="form-label">Lokacija apartmana</label>
                     <input type="text" class="form-control" id="Location" name="Location" value="@Model.Location" />
                 </div>
-                <!-- Ovde treba dodati i kontrolu za slike!
+                @if(Model.ImagePaths != null){
+
+                        <div class="mb-3">
+                            <label for="ExistingImages" class="form-label">Fotografije</label>
+                            @foreach (var images in Model.ImagePaths)
+                            {
+                                <div class="image-container" data-image-path="@images">
+                                    <img src="@images" alt="@images" width="250" height="90" />
+                                    <button type="button" class="btn btn-danger" onclick="deleteImage('@Model.Id','@images')">Obrisi</button>
+                                 </div>
+                            }
+                        </div>
+                     }
                 <div class="mb-3">
                     <label for="ImagePaths" class="form-label">Dodajte fotografije</label>
                     <input type="file" class="form-control" id="ImagePaths" name="ImagePaths" accept="image/png, image/jpeg" multiple />
-                </div> -->
+                </div>
                 <div class="mb-3">
                     <label for="City" class="form-label">Grad</label>
                     <input type="text" class="form-control" id="City" name="City" value="@Model.City" />

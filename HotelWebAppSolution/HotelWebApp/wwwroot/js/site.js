@@ -3,6 +3,7 @@
 
 // Write your JavaScript code.
 
+/*
 window.onscroll = function () { stickyNavbar() };
 
 var navbar = document.getElementById("myNavbar");
@@ -81,4 +82,4 @@ function displayHotels(hotels) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', fetchHotels);
+document.addEventListener('DOMContentLoaded', fetchHotels);*/
