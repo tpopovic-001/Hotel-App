@@ -3,12 +3,12 @@
 
 // Write your JavaScript code.
 
-/*
+
 const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=40.730610&longitude=-73.935242&checkIn=2024-05-21&checkOut=2024-06-04&pageNumber=1&currencyCode=USD';
 const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '7726e13a05msh99dd95f9cce01b7p126ecdjsn413621b55be2',
+        'X-RapidAPI-Key': 'aab9d3409emsh4dec1d7b43abf77p187cf8jsn95dc745d2b8c',
         'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
     }
 };
@@ -69,4 +69,4 @@ function displayHotels(hotels) {
     });
 }
 
-document.addEventListener('DOMContentLoaded', fetchHotels);*/
+document.addEventListener('DOMContentLoaded', fetchHotels);
