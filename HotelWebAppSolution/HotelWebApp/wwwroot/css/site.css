@@ -75,7 +75,7 @@ td a {
     }
 
 .card {
-    height: 101vh;
+    height: 106vh;
     border: solid thin violet;
 }
 
@@ -117,3 +117,7 @@ li a {
         transform: scaleX(1);
         transform-origin: left;
     }
+
+#Cena {
+    color: green;
+}
