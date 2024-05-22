@@ -79,6 +79,13 @@ td a {
     border: solid thin violet;
 }
 
+.card-img-top {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Adjust as needed */
+    object-fit: cover;
+}
+
 .link-container {
     height: 15vh;
     display: flex;
