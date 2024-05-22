@@ -12,45 +12,25 @@
 
     <div class="container-flex">
         <div class="row">
-            @for (int i = 0; i < Model.Count; i += 2)
+            @foreach (var app in Model)
             {
                 <div class="col-md-6">
                     <div class="card mb-4">
                         <div class="card-body">
-                            @if (Model[i].ImagePaths != null && Model[i].ImagePaths.Count > 0)
+                            @if (app.ImagePaths != null && app.ImagePaths.Count > 0)
                             {
-                                <img src="@Model[i].ImagePaths[0]" class="card-img-top" alt="Apartment Image" style="width: 590px; height: 400px;">
+                                <img src="@app.ImagePaths[0]" class="card-img-top" alt="Apartment Image" style="object-fit: cover; width: 100%; height: 400px;">
                             }
-                            <h5 class="card-title">@Model[i].ApartmentName</h5>
-                            <p class="card-text">@Model[i].Address</p>
-                            <p class="card-text">@Model[i].ApartmentDescription</p>
-                            <p class="card-text">@Model[i].City, @Model[i].Country</p>
-                            <p class="card-text">Broj kreveta: @Model[i].NumOfBeds</p>
-                            <p class="card-text fw-bold" id="Cena">Cena noćenja: @Model[i].PricePerNight</p>
-                            <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i].Id })" class="btn btn-info-custom">Info</a>
+                            <h5 class="card-title pt-2">@app.ApartmentName</h5>
+                            <p class="card-text">@app.Address</p>
+                            <p class="card-text">@app.ApartmentDescription</p>
+                            <p class="card-text">@app.City, @app.Country</p>
+                            <p class="card-text">Broj kreveta: @app.NumOfBeds</p>
+                            <p class="card-text fw-bold" id="Cena">Cena noćenja: @app.PricePerNight</p>
+                            <a href="@Url.Action("OneApartment", "Apartments", new { id = app.Id })" class="btn btn-info-custom">Info</a>
                         </div>
                     </div>
                 </div>
-                @if (i + 1 < Model.Count)
-                {
-                    <div class="col-md-6">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                @if (Model[i].ImagePaths != null && Model[i].ImagePaths.Count > 0)
-                                {
-                                    <img src="@Model[i + 1].ImagePaths[0]" class="card-img-top" alt="Apartment Image" style="width: 590px; height: 400px;">
-                                }
-                                <h5 class="card-title">@Model[i + 1].ApartmentName</h5>
-                                <p class="card-text">@Model[i + 1].Address</p>
-                                <p class="card-text">@Model[i + 1].ApartmentDescription</p>
-                                <p class="card-text">@Model[i + 1].City, @Model[i + 1].Country</p>
-                                <p class="card-text">Broj kreveta: @Model[i +1].NumOfBeds</p>
-                                <p class="card-text fw-bold" id="Cena">Cena noćenja: @Model[i + 1].PricePerNight</p>
-                                <a href="@Url.Action("OneApartment", "Apartments", new { id = Model[i + 1].Id })" class="btn btn-info-custom">Info</a>
-                            </div>
-                        </div>
-                    </div>
-                }
             }
         </div>
     </div>

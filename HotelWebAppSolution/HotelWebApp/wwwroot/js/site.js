@@ -4,80 +4,98 @@
 // Write your JavaScript code.
 
 
-//const url = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation?latitude=40.730610&longitude=-73.935242&checkIn=2024-05-21&checkOut=2024-06-04&pageNumber=1&currencyCode=USD';
-//const options = {
-//    method: 'GET',
-//    headers: {
-//        'X-RapidAPI-Key': 'aab9d3409emsh4dec1d7b43abf77p187cf8jsn95dc745d2b8c',
-//        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
-//    }
-//};
+const url = (() => {
+    const baseUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation';
+    const latitude = 40.730610;
+    const longitude = -73.935242;
+    const checkIn = new Date();
+    checkIn.setDate(checkIn.getDate() + 1); // za Check-in
+    const checkOut = new Date();
+    checkOut.setDate(checkOut.getDate() + 8); // za Check-out
 
-//async function fetchHotels() {
-//    try {
-//        const response = await fetch(url, options);
-//        const result = await response.json();
-//        displayHotels(result.data.data);
-//    } catch (error) {
-//        console.error(error);
-//    }
-//}
+    const formattedCheckIn = checkIn.toISOString().split('T')[0];
+    const formattedCheckOut = checkOut.toISOString().split('T')[0];
 
-//function displayHotels(hotels) {
-//    const hotelsContainer = document.getElementById('APIHotels').querySelector('.row');
+    return `${baseUrl}?latitude=${latitude}&longitude=${longitude}&checkIn=${formattedCheckIn}&checkOut=${formattedCheckOut}&pageNumber=1&currencyCode=USD`;
+})();
 
-//    if (!hotelsContainer) {
-//        console.error('Element with id "APIHotels" not found');
-//        return;
-//    }
+const options = {
+    method: 'GET',
+    headers: {
+        'X-RapidAPI-Key': 'aab9d3409emsh4dec1d7b43abf77p187cf8jsn95dc745d2b8c',
+        'X-RapidAPI-Host': 'tripadvisor16.p.rapidapi.com'
+    }
+};
 
-//    hotels.forEach(hotel => {
-//        const colDiv = document.createElement('div');
-//        colDiv.classList.add('col-md-6');
+async function fetchHotels() {
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json();
+        console.log(result);
+        if (result.status && result.data && result.data.data) {
+            displayHotels(result.data.data);
+        } else {
+            console.error('Unexpected API response structure:', result);
+        }
+    } catch (error) {
+        console.error('Error fetching hotels:', error);
+    }
+}
 
-//        const cardDiv = document.createElement('div');
-//        cardDiv.classList.add('card', 'mb-4');
+function displayHotels(hotels) {
+    const hotelsContainer = document.getElementById('APIHotels').querySelector('.row');
 
-//        const hotelImage = document.createElement('img');
-//        hotelImage.classList.add('card-img-top');
+    if (!hotelsContainer) {
+        console.error('Element with id "APIHotels" not found');
+        return;
+    }
 
-//        // Izvuci link slike iz podataka hotela
-//        const imageUrl = hotel.cardPhotos[0]?.sizes?.urlTemplate;
+    hotels.forEach(hotel => {
+        const colDiv = document.createElement('div');
+        colDiv.classList.add('col-md-6');
 
-//        if (imageUrl) {
-//            // Zamijeni {width} i {height} sa stvarnim dimenzijama
-//            const replacedUrl = imageUrl.replace('{width}', '450').replace('{height}', '300');
-//            hotelImage.src = replacedUrl;
-//        } else {
-//            // Ako nema dostupne slike, postavi placeholder sliku
-//            hotelImage.src = 'placeholder.jpg'; // Postavite putanju do placeholder slike
-//            hotelImage.alt = 'No image available';
-//        }
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card', 'mb-4');
 
-//        const cardBodyDiv = document.createElement('div');
-//        cardBodyDiv.classList.add('card-body');
+        const hotelImage = document.createElement('img');
+        hotelImage.classList.add('card-img-top');
 
-//        const cardTitle = document.createElement('h5');
-//        cardTitle.classList.add('card-title');
-//        cardTitle.textContent = hotel.title;
+        const imageUrl = hotel.cardPhotos[0]?.sizes?.urlTemplate;
 
-//        const cardTextLocation = document.createElement('p');
-//        cardTextLocation.classList.add('card-text');
-//        cardTextLocation.textContent = hotel.secondaryInfo;
+        if (imageUrl) {
+            const replacedUrl = imageUrl.replace('{width}', '450').replace('{height}', '300');
+            hotelImage.src = replacedUrl;
+        } else {
+            hotelImage.src = 'placeholder.jpg';
+            hotelImage.alt = 'No image available';
+        }
 
-//        const cardTextRating = document.createElement('p');
-//        cardTextRating.classList.add('card-text');
-//        cardTextRating.textContent = `Rating: ${hotel.bubbleRating.rating} (${hotel.bubbleRating.count} reviews)`;
+        const cardBodyDiv = document.createElement('div');
+        cardBodyDiv.classList.add('card-body');
 
-//        cardBodyDiv.appendChild(cardTitle);
-//        cardBodyDiv.appendChild(cardTextLocation);
-//        cardBodyDiv.appendChild(cardTextRating);
+        const cardTitle = document.createElement('h5');
+        cardTitle.classList.add('card-title');
+        cardTitle.textContent = hotel.title;
 
-//        cardDiv.appendChild(hotelImage);
-//        cardDiv.appendChild(cardBodyDiv);
-//        colDiv.appendChild(cardDiv);
-//        hotelsContainer.appendChild(colDiv);
-//    });
-//}
+        const cardTextLocation = document.createElement('p');
+        cardTextLocation.classList.add('card-text');
+        cardTextLocation.textContent = hotel.secondaryInfo;
 
-//document.addEventListener('DOMContentLoaded', fetchHotels);
+        const cardTextRating = document.createElement('p');
+        cardTextRating.classList.add('card-text');
+        cardTextRating.textContent = `Rating: ${hotel.bubbleRating.rating} (${hotel.bubbleRating.count} reviews)`;
+
+        cardBodyDiv.appendChild(cardTitle);
+        cardBodyDiv.appendChild(cardTextLocation);
+        cardBodyDiv.appendChild(cardTextRating);
+
+        cardDiv.appendChild(hotelImage);
+        cardDiv.appendChild(cardBodyDiv);
+        colDiv.appendChild(cardDiv);
+        hotelsContainer.appendChild(colDiv);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', fetchHotels);
+
+
