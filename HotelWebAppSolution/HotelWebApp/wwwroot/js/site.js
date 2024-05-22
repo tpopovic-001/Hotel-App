@@ -3,7 +3,6 @@
 
 // Write your JavaScript code.
 
-
 const url = (() => {
     const baseUrl = 'https://tripadvisor16.p.rapidapi.com/api/v1/hotels/searchHotelsByLocation';
     const latitude = 40.730610;
@@ -60,15 +59,12 @@ function displayHotels(hotels) {
         const hotelImage = document.createElement('img');
         hotelImage.classList.add('card-img-top');
 
-        // Extract image URL from hotel data
         const imageUrl = hotel.cardPhotos[0]?.sizes?.urlTemplate;
 
         if (imageUrl) {
-            // Use the URL as is
-            hotelImage.src = imageUrl.split('?')[0]; // Remove the query parameters if present
+            hotelImage.src = imageUrl.split('?')[0];
         } else {
-            // If no image available, set placeholder image
-            hotelImage.src = 'placeholder.jpg'; // Set path to placeholder image
+            hotelImage.src = 'placeholder.jpg';
             hotelImage.alt = 'No image available';
         }
 

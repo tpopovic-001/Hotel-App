@@ -82,7 +82,7 @@ td a {
 .card-img-top {
     width: 100%;
     height: auto;
-    max-height: 400px; /* Adjust as needed */
+    max-height: 400px;
     object-fit: cover;
 }
 
