@@ -60,13 +60,15 @@ function displayHotels(hotels) {
         const hotelImage = document.createElement('img');
         hotelImage.classList.add('card-img-top');
 
+        // Extract image URL from hotel data
         const imageUrl = hotel.cardPhotos[0]?.sizes?.urlTemplate;
 
         if (imageUrl) {
-            const replacedUrl = imageUrl.replace('{width}', '450').replace('{height}', '300');
-            hotelImage.src = replacedUrl;
+            // Use the URL as is
+            hotelImage.src = imageUrl.split('?')[0]; // Remove the query parameters if present
         } else {
-            hotelImage.src = 'placeholder.jpg';
+            // If no image available, set placeholder image
+            hotelImage.src = 'placeholder.jpg'; // Set path to placeholder image
             hotelImage.alt = 'No image available';
         }
 
@@ -97,5 +99,6 @@ function displayHotels(hotels) {
 }
 
 document.addEventListener('DOMContentLoaded', fetchHotels);
+
 
 
