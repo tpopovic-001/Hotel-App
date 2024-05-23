@@ -75,7 +75,7 @@ td a {
     }
 
 .card {
-    height: 107vh;
+    height: auto;
     border: solid thin violet;
 }
 
